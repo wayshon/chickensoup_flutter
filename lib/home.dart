@@ -34,7 +34,7 @@ class HomeState extends State<Home> {
   }
 
   buildContent() {
-    return new CardInfo(text);
+    return new CardInfo(text, true);
   }
 
   getSoups() async {
