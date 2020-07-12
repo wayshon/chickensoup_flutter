@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'home.dart';
+import 'store/common.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  final Model = new CommonModel();
+  runApp(
+    Provider<Set<String>>.value(
+      value: null,
+      child: ChangeNotifierProvider.value(
+        value: Model,
+        child: new MyApp(),
+      ),
+    )
+  );
+
+  // runApp(new MyApp())
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: '一碗毒鸡汤',
       home: new Home(),
       theme: new ThemeData(
-        primaryColor: Colors.orange,
+        primaryColor: Colors.blue,
       ),
     );
   }
