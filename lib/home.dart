@@ -8,6 +8,8 @@ import 'dart:math';
 import 'list.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'components/toast.dart';
+import 'package:scan_flutter_ios/scan_flutter_ios.dart';
+import 'package:flutter/services.dart';
 
 const _SoupUrl = 'https://calcbit.com/resource/dujitang/jitang.json';
 
@@ -30,17 +32,17 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold (
-      appBar: new AppBar(
-        title: new Text('一碗毒鸡汤'),
-        actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.list), onPressed: pushList),
-        ],
-      ),
-      body: isLoading ? new Center(
-        child: new SpinKitCubeGrid(color: Colors.blue)
-      ) : buildContent()
-    );
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('一碗毒鸡汤'),
+          actions: <Widget>[
+            new IconButton(icon: new Icon(Icons.list), onPressed: pushList),
+            new IconButton(icon: new Icon(Icons.scanner), onPressed: scan),
+          ],
+        ),
+        body: isLoading
+            ? new Center(child: new SpinKitCubeGrid(color: Colors.blue))
+            : buildContent());
   }
 
   buildContent() {
@@ -90,13 +92,22 @@ class HomeState extends State<Home> {
   }
 
   pushList() async {
-    final str = await Navigator.of(context).push(
-      new MaterialPageRoute(builder: (context) {
-        return new MySavedPage();
-      })
-    );
+    final str = await Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (context) {
+      return new MySavedPage();
+    }));
     setState(() {
       text = str;
     });
+  }
+
+  scan() async {
+    String result;
+    try {
+      result = await ScanFlutterIos.scan();
+    } on PlatformException {
+      result = 'Failed to get platform version.';
+    }
+    Toast.show(context, result, duration: 5);
   }
 }
