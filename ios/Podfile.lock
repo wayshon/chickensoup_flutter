@@ -1,9 +1,13 @@
 PODS:
   - Flutter (1.0.0)
+  - MBProgressHUD (1.2.0)
   - path_provider_linux (0.0.1):
     - Flutter
-  - scan_flutter_ios (0.0.1):
+  - scan_flutter_ios (0.0.6):
     - Flutter
+    - MBProgressHUD (= 1.2.0)
+    - SGQRCode (= 3.0.1)
+  - SGQRCode (3.0.1)
   - shared_preferences (0.0.1):
     - Flutter
   - shared_preferences_linux (0.0.1):
@@ -21,6 +25,11 @@ DEPENDENCIES:
   - shared_preferences_linux (from `.symlinks/plugins/shared_preferences_linux/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MBProgressHUD
+    - SGQRCode
 
 EXTERNAL SOURCES:
   Flutter:
@@ -40,8 +49,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   path_provider_linux: 4d630dc393e1f20364f3e3b4a2ff41d9674a84e4
-  scan_flutter_ios: 863083859e7f8a0acff915ab756942b37af1f2e2
+  scan_flutter_ios: 7d9e434c9ff81f024a678693cfafa3be3e8fd682
+  SGQRCode: bf02d60e18d6660a9d75ff1c8b9b467f064f054e
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   shared_preferences_linux: afefbfe8d921e207f01ede8b60373d9e3b566b78
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
@@ -49,4 +60,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.9.1
